@@ -3,16 +3,30 @@ import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      message: ""
+    }
+
+    this.handleMessage = this.handleMessage.bind(this)
+  }
+
+  handleMessage(event){
+    this.setState({
+      message: event.target.value
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <input 
+          style = {{border: '3px solid red', margin: '20px', fontSize: '40px'}}
+          onChange={this.handleMessage}
+          placeholder='Enter Message' /><br />
+        <span style={{margin: '20px', fontSize: '50px'}}>{this.state.message}</span>
       </div>
     );
   }
